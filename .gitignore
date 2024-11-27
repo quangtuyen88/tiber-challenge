@@ -1,0 +1,15 @@
+__pycache__/
+.env
+
+# Devenv
+.devenv*
+devenv.local.nix
+
+# direnv
+.direnv
+
+# Ruff
+.ruff_cache
+
+# pre-commit
+.pre-commit-config.yaml

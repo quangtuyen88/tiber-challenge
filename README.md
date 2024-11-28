@@ -17,10 +17,12 @@ bindings for the Uniswap V2 Factory and Uniswap V2 Router contracts.
 
 ## Getting Started
 
-You need these installed on your system:
+Pre-requisites:
 
-- [nix installer](https://zero-to-nix.com/concepts/nix-installer) 
-- [devenv](https://devenv.sh/getting-started/) 
+- Install Nix with the [Determinate Nix Installer](https://zero-to-nix.com/concepts/nix-installer).
+- Install [devenv](https://devenv.sh/getting-started/) using `nix profile install --accept-flake-config nixpkgs#devenv`.
+
+Run the starter kit and optional linters:
 
 1. Clone this repository.
 2. Duplicate `.env.template` as `.env` and set the required environment variables.

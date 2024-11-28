@@ -26,5 +26,6 @@ Run the starter kit and optional linters:
 
 1. Clone this repository.
 2. Duplicate `.env.template` as `.env` and set the required environment variables.
-3. Run the script with `starter-kit`.
-4. Run linters with `lint-code`.
+3. Run `devenv shell` to enter a devenv shell.
+4. In the devenv shell, run the script with `starter-kit`.
+5. In the devenv shell, you can run linters with `lint-code`.

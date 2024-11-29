@@ -87,6 +87,27 @@ def swap_exact_tokens_for_tokens(w3: Web3) -> None:
 
 tasks.append(swap_exact_tokens_for_tokens)
 
+def swap_exact_atn_for_ntn(w3: Web3) -> None:
+    """Swaps 0.01 ATN for NTN."""
+    """Should probably more elegantly be merged with swap_exact_tokens_for_tokens in a way that makes it configurable"""
+
+    watn = ERC20(w3, params.WATN_ADDRESS)
+    atn_amount = int(0.01* 10 ** watn.decimals())
+    approve_tx = watn.approve(params.UNISWAP_ROUTER_ADDRESS, atn_amount).transact()
+    w3.eth.wait_for_transaction_receipt(approve_tx)
+
+    uniswap_router = UniswapV2Router02(w3, params.UNISWAP_ROUTER_ADDRESS)
+    sender_address = cast(ChecksumAddress, w3.eth.default_account)
+    deadline = w3.eth.get_block("latest").timestamp + 10  # type: ignore
+    swap_tx = uniswap_router.swap_exact_eth_for_tokens(
+        amount_out_min=0,
+        path=[params.WATN_ADDRESS, params.NTN_ADDRESS],
+        to=sender_address,
+        deadline=deadline,
+    ).transact({"value": atn_amount})
+    w3.eth.wait_for_transaction_receipt(swap_tx)
+
+tasks.append(swap_exact_atn_for_ntn)
 
 def add_liquidity(w3: Web3) -> None:
     """Adds 0.1 NTN and 0.01 USDC to the Uniswap liquidity pool."""

@@ -40,11 +40,11 @@ tasks.append(bond)
 
 
 def unbond(w3: Web3) -> None:
-    """Unbonds 0.1 NTN from the first validator."""
+    """Unbonds 0.01 NTN from the first validator."""
 
     autonity = Autonity(w3)
     validator_address = autonity.get_validators()[0]
-    amount = int(0.1 * 10 ** autonity.decimals())
+    amount = int(0.01 * 10 ** autonity.decimals())
     tx = autonity.unbond(validator_address, amount).transact()
     w3.eth.wait_for_transaction_receipt(tx)
 

@@ -29,3 +29,7 @@ Run the starter kit and optional linters:
 3. Run `devenv shell` to enter a devenv shell.
 4. In the devenv shell, run the script with `starter-kit`.
 5. In the devenv shell, you can run linters with `lint-code`.
+
+Note: the private key can be extracted from a Geth keyfile as a hex-string with
+[autonity-cli](https://github.com/autonity/autonity-cli)'s `aut account
+reveal-private-key` command.

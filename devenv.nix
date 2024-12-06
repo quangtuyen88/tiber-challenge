@@ -11,10 +11,7 @@
     enable = true;
     version = "3.12";
     venv.enable = true;
-    venv.requirements = ''
-      autonity
-      python-dotenv
-    '';
+    venv.requirements = ./requirements.txt;
   };
 
   scripts.lint-code.exec = ''

@@ -4,6 +4,7 @@ from autonity.autonity import Autonity
 from autonity.erc20 import ERC20
 from eth_typing import ChecksumAddress
 from web3 import Web3
+from web3.types import TxParams
 
 from . import params
 from .bindings.uniswap_v2_factory import UniswapV2Factory
@@ -87,12 +88,12 @@ def swap_exact_tokens_for_tokens(w3: Web3) -> None:
 
 tasks.append(swap_exact_tokens_for_tokens)
 
+
 def swap_exact_atn_for_ntn(w3: Web3) -> None:
     """Swaps 0.01 ATN for NTN."""
-    """Should probably more elegantly be merged with swap_exact_tokens_for_tokens in a way that makes it configurable"""
 
     watn = ERC20(w3, params.WATN_ADDRESS)
-    atn_amount = int(0.01* 10 ** watn.decimals())
+    atn_amount = int(0.01 * 10 ** watn.decimals())
     approve_tx = watn.approve(params.UNISWAP_ROUTER_ADDRESS, atn_amount).transact()
     w3.eth.wait_for_transaction_receipt(approve_tx)
 
@@ -104,10 +105,12 @@ def swap_exact_atn_for_ntn(w3: Web3) -> None:
         path=[params.WATN_ADDRESS, params.NTN_ADDRESS],
         to=sender_address,
         deadline=deadline,
-    ).transact({"value": atn_amount})
+    ).transact(cast(TxParams, {"value": atn_amount}))
     w3.eth.wait_for_transaction_receipt(swap_tx)
 
+
 tasks.append(swap_exact_atn_for_ntn)
+
 
 def add_liquidity(w3: Web3) -> None:
     """Adds 0.1 NTN and 0.01 USDC to the Uniswap liquidity pool."""

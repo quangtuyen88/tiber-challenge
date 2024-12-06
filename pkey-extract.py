@@ -19,4 +19,3 @@ if __name__ == "__main__":
     pwd = getpass.getpass("Keyfile password: ")
     key = w3.eth.account.decrypt(encrypted_key, pwd)
     print(key.hex())
-

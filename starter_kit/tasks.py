@@ -1,6 +1,6 @@
 from typing import Callable, List, TypeAlias, cast
 
-from autonity.autonity import Autonity
+from autonity import Autonity
 from eth_typing import ChecksumAddress
 from web3 import Web3
 from web3.types import TxParams

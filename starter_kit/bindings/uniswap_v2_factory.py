@@ -7,7 +7,7 @@ import typing
 import eth_typing
 import hexbytes
 import web3
-from web3.contract import base_contract, contract
+from web3.contract import contract
 
 
 class UniswapV2Factory:
@@ -33,7 +33,7 @@ class UniswapV2Factory:
         )
 
     @property
-    def PairCreated(self) -> typing.Type[base_contract.BaseContractEvent]:
+    def PairCreated(self) -> contract.ContractEvent:
         """Binding for `event PairCreated` on the UniswapV2Factory contract."""
         return self._contract.events.PairCreated
 

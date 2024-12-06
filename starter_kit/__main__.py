@@ -1,24 +1,29 @@
 import logging
 import os
 import random
+from typing import cast
 
-from web3 import HTTPProvider, Web3
+from autonity import networks
+from web3 import Web3
 from web3.exceptions import ContractLogicError
-from web3.middleware.signing import construct_sign_and_send_raw_middleware
+from web3.middleware import Middleware, SignAndSendRawMiddlewareBuilder
 
-from .params import RPC_URL
 from .tasks import tasks
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("starter_kit")
 
-w3 = Web3(HTTPProvider(RPC_URL))
+w3 = Web3(networks.piccadilly.http_provider)
 
 sender_account = w3.eth.account.from_key(os.environ["SENDER_PRIVATE_KEY"])
+
+# Set `sender_account` as the sender of all transactions
 w3.eth.default_account = sender_account.address
 
 # Set `sender_account` as the signer of all transactions
-signer_middleware = construct_sign_and_send_raw_middleware(sender_account)
+signer_middleware = cast(
+    Middleware, SignAndSendRawMiddlewareBuilder.build(sender_account)
+)
 w3.middleware_onion.add(signer_middleware)
 
 for _ in range(10_000):

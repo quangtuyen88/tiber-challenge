@@ -1,12 +1,12 @@
 from typing import Callable, List, TypeAlias, cast
 
-from autonity.autonity import Autonity
-from autonity.erc20 import ERC20
+from autonity import Autonity
 from eth_typing import ChecksumAddress
 from web3 import Web3
 from web3.types import TxParams
 
 from . import params
+from .bindings.erc20 import ERC20
 from .bindings.uniswap_v2_factory import UniswapV2Factory
 from .bindings.uniswap_v2_router_02 import UniswapV2Router02
 

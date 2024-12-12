@@ -6,7 +6,7 @@ from eth_typing import ChecksumAddress
 from web3 import Web3
 
 NTN_ADDRESS = AUTONITY_CONTRACT_ADDRESS
-USDC_ADDRESS = cast(ChecksumAddress, "0x3a60C03a86eEAe30501ce1af04a6C04Cf0188700")
+USDCX_ADDRESS = cast(ChecksumAddress, "0xB855D5e83363A4494e09f0Bb3152A70d3f161940")
 WATN_ADDRESS = cast(ChecksumAddress, "0xcE17e51cE4F0417A1aB31a3c5d6831ff3BbFa1d2")
 
 UNISWAP_ROUTER_ADDRESS = cast(

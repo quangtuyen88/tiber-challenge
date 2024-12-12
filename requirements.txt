@@ -1,2 +1,2 @@
-autonity==5.0.0
+autonity==5.1.0
 python-dotenv==1.0.1

@@ -3,8 +3,7 @@ import os
 import random
 from typing import cast
 
-from autonity import networks
-from web3 import Web3
+from web3 import Web3, HTTPProvider
 from web3.exceptions import ContractLogicError
 from web3.middleware import Middleware, SignAndSendRawMiddlewareBuilder
 
@@ -13,7 +12,7 @@ from .tasks import tasks
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("starter_kit")
 
-w3 = Web3(networks.piccadilly.http_provider)
+w3 = Web3(HTTPProvider(os.environ["RPC_URL"]))
 
 sender_account = w3.eth.account.from_key(os.environ["SENDER_PRIVATE_KEY"])
 

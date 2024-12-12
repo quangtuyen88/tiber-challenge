@@ -26,6 +26,12 @@ Run the starter kit and optional linters:
 
 1. Clone this repository.
 2. Duplicate `.env.template` as `.env` and set the required environment variables.
+    - `RPC_URL`: The URL of a Piccadilly (Tiber) Testnet RPC provider, please select
+      one from [Chainlist](https://chainlist.org/?testnets=true&search=piccadilly).
+    - `SENDER_PRIVATE_KEY`: The private key of the account that will sign and
+      send the transactions.
+    - `RECIPIENT_ADDRESS`: The address of an arbitrary account that tokens may
+      be sent to.
 3. Run `devenv shell` to enter a devenv shell.
 4. In the devenv shell, run the script with `starter-kit`.
 5. In the devenv shell, you can run linters with `lint-code`.

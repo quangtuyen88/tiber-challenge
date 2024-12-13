@@ -1,8 +1,14 @@
-# Autonity Tiber Challenge
+# Autonity PiccadillyTiber Challenge
 
-GitHub repository for the Autonity Tiber Challenge.
+GitHub repository for the Autonity Piccadilly Tiber Challenge.
 
-Example code for the Use-case Testing activity of the Tiber Challange.
+For an overview of the Tiber Challenge tasks see the [TIBER_CHALLENGE_README.md](./TIBER_CHALLENGE_README.md).
+
+This repo contains Starter Kit example code for the *Use-case Testing* activity of the Tiber Challenge.
+
+To set up a validator node for *Oracle Calibration Testing* activity of the challenge see the Autonity GitHub repos for the main client [autonity](https://github.com/autonity/autonity) and oracle server [autonity-oracle](https://github.com/autonity/autonity-oracle).
+
+## Starter Kit
 
 Participants can earn points by running the script as-is, but in order to get
 awarded with a higher score it is recommended to modify and optimize the code.
@@ -15,7 +21,7 @@ contract bindings.
 The [`starter_kit.bindings`](./starter_kit/bindings/) module contains Python
 bindings for the Uniswap V2 Factory and Uniswap V2 Router contracts.
 
-## Getting Started
+### Getting Started
 
 Pre-requisites:
 

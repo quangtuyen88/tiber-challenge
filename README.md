@@ -1,4 +1,4 @@
-# Autonity PiccadillyTiber Challenge
+# Autonity Piccadilly Tiber Challenge
 
 GitHub repository for the Autonity Piccadilly Tiber Challenge.
 

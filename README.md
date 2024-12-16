@@ -14,17 +14,13 @@ You need to set up and run a validator node on Piccadilly Testnet to take part i
 
 ## Take part in the challenge
 
-To take part, sign-up and set-up for on-chain engagement with the tasks. Submit transactions to take part in *Use-case Testing*. Run a validator node to take part in *Oracle Calibration Testing*.
+You can sign-up, get setup and prepare for the *Piccadilly Tiber Challenge* now! 
 
-Participants are scored based on their on-chain performance. Scoring is detected by querying chain data associated with your registered participant address. See the individual task descriptions for detail on how to participate and score. See [Tiber Challenge Rewards](./README.md#tiber-challenge-rewards) for the incentive.
+Scoring for Tiber Challenge will begin 18<sup>th</sup> December at 12:00 UTC. So you have plenty of time to get ready to take part. The challenge will run through into January and an end date will be announced after the New Year. To take part, just:
 
-You can sign-up, get setup and prepare for taking part in the *Piccadilly Tiber Challenge* now! 
-
-Scoring for Tiber Challenge will begin 18<sup>th</sup> December at 12:00 UTC. So you have plenty of time to get ready to take part. There isn't a fixed end date yet. The challenge will run through into January and an end date will be announced after the New Year. To take part, just:
-
-- Sign up and set-up - see [Register and set-up](./README.md#register-and-set-up) on this page.
-- Take part - take part in use case and validator oracle testing tasks. See [Tiber Tasks](./README.md#tiber-tasks)
-- Connect with the community. Join the [Autonity Discord](https://discord.gg/autonity), the main social hub of the Autonity community, for discussions about the game and Autonity in general; and [follow](https://twitter.com/autonity_) the project on X (formerly Twitter&hellip;) so you don’t miss any key announcements!
+- [Register and set-up](./README.md#register-and-set-up) for the *Piccadilly Tiber Challenge*
+- Take part in the [Tiber Tasks](./README.md#tiber-tasks) challenges
+- Join the [Autonity Discord](https://discord.gg/autonity), the main social hub of the Autonity community, for discussions about the game and Autonity in general, and [follow](https://twitter.com/autonity_) the project on X (formerly Twitter&hellip;) so you don’t miss any key announcements!
 
 ---
 

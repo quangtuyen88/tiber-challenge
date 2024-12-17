@@ -8,6 +8,7 @@ from web3.exceptions import ContractLogicError
 from web3.middleware import Middleware, SignAndSendRawMiddlewareBuilder
 
 from .tasks import tasks
+# from . import tasks
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("starter_kit")
@@ -25,7 +26,17 @@ signer_middleware = cast(
 )
 w3.middleware_onion.add(signer_middleware)
 
-for _ in range(10_000):
+"""
+try:
+    tasks.swap_exact_tokens_for_tokens_usdcx_to_atn(w3)
+except ContractLogicError as e:
+    # Contract execution reverted
+    logger.warning(e)
+
+exit()
+"""
+
+while True:
     task = random.choice(tasks)
     logger.info(task.__name__)
     try:

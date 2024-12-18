@@ -64,6 +64,28 @@ def approve(w3: Web3) -> None:
 
 tasks.append(approve)
 
+def swap_exact_ntn_for_atn(w3: Web3) -> None:
+    """Swaps 1 NTN for ATN."""
+
+    ntn = ERC20(w3, params.NTN_ADDRESS)
+    ntn_amount = int(1 * 10 ** ntn.decimals())
+    approve_tx = ntn.approve(params.UNISWAP_ROUTER_ADDRESS, ntn_amount).transact()
+    w3.eth.wait_for_transaction_receipt(approve_tx)
+
+    uniswap_router = UniswapV2Router02(w3, params.UNISWAP_ROUTER_ADDRESS)
+    sender_address = cast(ChecksumAddress, w3.eth.default_account)
+    deadline = w3.eth.get_block("latest").timestamp + 10  # type: ignore
+    swap_tx = uniswap_router.swap_exact_eth_for_tokens(
+        amount_out_min=0,
+        path=[ params.NTN_ADDRESS,params.WATN_ADDRESS],
+        to=sender_address,
+        deadline=deadline,
+    ).transact(cast(TxParams, {"value": ntn_amount}))
+    w3.eth.wait_for_transaction_receipt(swap_tx)
+
+
+tasks.append(swap_exact_ntn_for_atn)
+
 
 def swap_exact_tokens_for_tokens(w3: Web3) -> None:
     """Swaps 0.01 NTN for USDCx."""

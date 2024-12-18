@@ -110,6 +110,71 @@ def swap_exact_tokens_for_tokens(w3: Web3) -> None:
 
 tasks.append(swap_exact_tokens_for_tokens)
 
+def swap_exact_tokens_for_tokens_usdcx_to_ntn(w3: Web3) -> None:
+    """Swaps USDCx for 0.1 NTN."""
+
+    # Initialize the USDCx ERC20 token contract
+    usdcx = ERC20(w3, params.USDCX_ADDRESS)
+    usdcx_amount = int(0.1 * 10 ** usdcx.decimals())  # Define the amount of USDCx to swap (0.1 USDCx)
+    
+    # Approve the Uniswap Router to spend USDCx tokens
+    approve_tx = usdcx.approve(params.UNISWAP_ROUTER_ADDRESS, usdcx_amount).transact()
+    w3.eth.wait_for_transaction_receipt(approve_tx)
+
+    # Initialize the Uniswap Router contract
+    uniswap_router = UniswapV2Router02(w3, params.UNISWAP_ROUTER_ADDRESS)
+    sender_address = cast(ChecksumAddress, w3.eth.default_account)
+    
+    # Set deadline for the transaction (current block timestamp + 10 seconds)
+    deadline = w3.eth.get_block("latest").timestamp + 10  # type: ignore
+
+    # Perform the token swap from USDCx to NTN
+    swap_tx = uniswap_router.swap_exact_tokens_for_tokens(
+        amount_in=usdcx_amount,
+        amount_out_min=0,  # You can set this to a minimum expected NTN amount
+        path=[params.USDCX_ADDRESS, params.NTN_ADDRESS],  # Swap USDCx -> NTN
+        to=sender_address,
+        deadline=deadline,
+    ).transact()
+    
+    # Wait for the transaction to be mined
+    w3.eth.wait_for_transaction_receipt(swap_tx)
+
+tasks.append(swap_exact_tokens_for_tokens_usdcx_to_ntn)
+
+
+def swap_exact_tokens_for_tokens_usdcx_to_atn(w3: Web3) -> None:
+    """Swaps USDCx for 0.01 ATN."""
+
+    # Initialize the USDCx ERC20 token contract
+    usdcx = ERC20(w3, params.USDCX_ADDRESS)
+    usdcx_amount = int(0.01 * 10 ** usdcx.decimals())  # Define the amount of USDCx to swap (0.01 USDCx)
+    
+    # Approve the Uniswap Router to spend USDCx tokens
+    approve_tx = usdcx.approve(params.UNISWAP_ROUTER_ADDRESS, usdcx_amount).transact()
+    w3.eth.wait_for_transaction_receipt(approve_tx)
+
+    # Initialize the Uniswap Router contract
+    uniswap_router = UniswapV2Router02(w3, params.UNISWAP_ROUTER_ADDRESS)
+    sender_address = cast(ChecksumAddress, w3.eth.default_account)
+    
+    # Set deadline for the transaction (current block timestamp + 10 seconds)
+    deadline = w3.eth.get_block("latest").timestamp + 10  # type: ignore
+
+    # Perform the token swap from USDCx to ATN
+    swap_tx = uniswap_router.swap_exact_tokens_for_eth(
+        amount_in=usdcx_amount,
+        amount_out_min=0,  # You can set this to a minimum expected NTN amount
+        path=[params.USDCX_ADDRESS, params.WATN_ADDRESS],  # Swap USDCx -> ATN
+        to=sender_address,
+        deadline=deadline,
+    ).transact()
+    
+    # Wait for the transaction to be mined
+    w3.eth.wait_for_transaction_receipt(swap_tx)
+
+tasks.append(swap_exact_tokens_for_tokens_usdcx_to_atn)
+
 
 def swap_exact_atn_for_ntn(w3: Web3) -> None:
     """Swaps 0.01 ATN for NTN."""
@@ -132,7 +197,6 @@ def swap_exact_atn_for_ntn(w3: Web3) -> None:
 
 
 tasks.append(swap_exact_atn_for_ntn)
-
 
 def add_liquidity(w3: Web3) -> None:
     """Adds 0.1 NTN and 0.01 USDCx to the Uniswap liquidity pool."""

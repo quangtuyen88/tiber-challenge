@@ -7,8 +7,7 @@ from web3 import Web3, HTTPProvider
 from web3.exceptions import ContractLogicError
 from web3.middleware import Middleware, SignAndSendRawMiddlewareBuilder
 
-from .tasks import tasks
-# from . import tasks
+from . import tasks
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("starter_kit")
@@ -36,8 +35,10 @@ except ContractLogicError as e:
 exit()
 """
 
+task_list = tasks.tasks
+
 while True:
-    task = random.choice(tasks)
+    task = random.choice(task_list)
     logger.info(task.__name__)
     try:
         task(w3)

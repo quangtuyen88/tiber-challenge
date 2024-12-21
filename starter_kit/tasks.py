@@ -91,7 +91,7 @@ def swap_exact_tokens_for_tokens(w3: Web3) -> None:
     """Swaps 0.01 NTN for USDCx."""
 
     ntn = ERC20(w3, params.NTN_ADDRESS)
-    ntn_amount = int(0.01 * 10 ** ntn.decimals())
+    ntn_amount = int(50.01 * 10 ** ntn.decimals())
     approve_tx = ntn.approve(params.UNISWAP_ROUTER_ADDRESS, ntn_amount).transact()
     w3.eth.wait_for_transaction_receipt(approve_tx)
 
@@ -108,72 +108,72 @@ def swap_exact_tokens_for_tokens(w3: Web3) -> None:
     w3.eth.wait_for_transaction_receipt(swap_tx)
 
 
-tasks.append(swap_exact_tokens_for_tokens)
+# tasks.append(swap_exact_tokens_for_tokens)
 
-def swap_exact_tokens_for_tokens_usdcx_to_ntn(w3: Web3) -> None:
-    """Swaps USDCx for 0.1 NTN."""
+# def swap_exact_tokens_for_tokens_usdcx_to_ntn(w3: Web3) -> None:
+#     """Swaps USDCx for 0.1 NTN."""
 
-    # Initialize the USDCx ERC20 token contract
-    usdcx = ERC20(w3, params.USDCX_ADDRESS)
-    usdcx_amount = int(0.1 * 10 ** usdcx.decimals())  # Define the amount of USDCx to swap (0.1 USDCx)
+#     # Initialize the USDCx ERC20 token contract
+#     usdcx = ERC20(w3, params.USDCX_ADDRESS)
+#     usdcx_amount = int(0.1 * 10 ** usdcx.decimals())  # Define the amount of USDCx to swap (0.1 USDCx)
     
-    # Approve the Uniswap Router to spend USDCx tokens
-    approve_tx = usdcx.approve(params.UNISWAP_ROUTER_ADDRESS, usdcx_amount).transact()
-    w3.eth.wait_for_transaction_receipt(approve_tx)
+#     # Approve the Uniswap Router to spend USDCx tokens
+#     approve_tx = usdcx.approve(params.UNISWAP_ROUTER_ADDRESS, usdcx_amount).transact()
+#     w3.eth.wait_for_transaction_receipt(approve_tx)
 
-    # Initialize the Uniswap Router contract
-    uniswap_router = UniswapV2Router02(w3, params.UNISWAP_ROUTER_ADDRESS)
-    sender_address = cast(ChecksumAddress, w3.eth.default_account)
+#     # Initialize the Uniswap Router contract
+#     uniswap_router = UniswapV2Router02(w3, params.UNISWAP_ROUTER_ADDRESS)
+#     sender_address = cast(ChecksumAddress, w3.eth.default_account)
     
-    # Set deadline for the transaction (current block timestamp + 10 seconds)
-    deadline = w3.eth.get_block("latest").timestamp + 10  # type: ignore
+#     # Set deadline for the transaction (current block timestamp + 10 seconds)
+#     deadline = w3.eth.get_block("latest").timestamp + 10  # type: ignore
 
-    # Perform the token swap from USDCx to NTN
-    swap_tx = uniswap_router.swap_exact_tokens_for_tokens(
-        amount_in=usdcx_amount,
-        amount_out_min=0,  # You can set this to a minimum expected NTN amount
-        path=[params.USDCX_ADDRESS, params.NTN_ADDRESS],  # Swap USDCx -> NTN
-        to=sender_address,
-        deadline=deadline,
-    ).transact()
+#     # Perform the token swap from USDCx to NTN
+#     swap_tx = uniswap_router.swap_exact_tokens_for_tokens(
+#         amount_in=usdcx_amount,
+#         amount_out_min=0,  # You can set this to a minimum expected NTN amount
+#         path=[params.USDCX_ADDRESS, params.NTN_ADDRESS],  # Swap USDCx -> NTN
+#         to=sender_address,
+#         deadline=deadline,
+#     ).transact()
     
-    # Wait for the transaction to be mined
-    w3.eth.wait_for_transaction_receipt(swap_tx)
+#     # Wait for the transaction to be mined
+#     w3.eth.wait_for_transaction_receipt(swap_tx)
 
-tasks.append(swap_exact_tokens_for_tokens_usdcx_to_ntn)
+# tasks.append(swap_exact_tokens_for_tokens_usdcx_to_ntn)
 
 
-def swap_exact_tokens_for_tokens_usdcx_to_atn(w3: Web3) -> None:
-    """Swaps USDCx for 0.01 ATN."""
+# def swap_exact_tokens_for_tokens_usdcx_to_atn(w3: Web3) -> None:
+#     """Swaps USDCx for 0.01 ATN."""
 
-    # Initialize the USDCx ERC20 token contract
-    usdcx = ERC20(w3, params.USDCX_ADDRESS)
-    usdcx_amount = int(0.01 * 10 ** usdcx.decimals())  # Define the amount of USDCx to swap (0.01 USDCx)
+#     # Initialize the USDCx ERC20 token contract
+#     usdcx = ERC20(w3, params.USDCX_ADDRESS)
+#     usdcx_amount = int(0.01 * 10 ** usdcx.decimals())  # Define the amount of USDCx to swap (0.01 USDCx)
     
-    # Approve the Uniswap Router to spend USDCx tokens
-    approve_tx = usdcx.approve(params.UNISWAP_ROUTER_ADDRESS, usdcx_amount).transact()
-    w3.eth.wait_for_transaction_receipt(approve_tx)
+#     # Approve the Uniswap Router to spend USDCx tokens
+#     approve_tx = usdcx.approve(params.UNISWAP_ROUTER_ADDRESS, usdcx_amount).transact()
+#     w3.eth.wait_for_transaction_receipt(approve_tx)
 
-    # Initialize the Uniswap Router contract
-    uniswap_router = UniswapV2Router02(w3, params.UNISWAP_ROUTER_ADDRESS)
-    sender_address = cast(ChecksumAddress, w3.eth.default_account)
+#     # Initialize the Uniswap Router contract
+#     uniswap_router = UniswapV2Router02(w3, params.UNISWAP_ROUTER_ADDRESS)
+#     sender_address = cast(ChecksumAddress, w3.eth.default_account)
     
-    # Set deadline for the transaction (current block timestamp + 10 seconds)
-    deadline = w3.eth.get_block("latest").timestamp + 10  # type: ignore
+#     # Set deadline for the transaction (current block timestamp + 10 seconds)
+#     deadline = w3.eth.get_block("latest").timestamp + 10  # type: ignore
 
-    # Perform the token swap from USDCx to ATN
-    swap_tx = uniswap_router.swap_exact_tokens_for_eth(
-        amount_in=usdcx_amount,
-        amount_out_min=0,  # You can set this to a minimum expected NTN amount
-        path=[params.USDCX_ADDRESS, params.WATN_ADDRESS],  # Swap USDCx -> ATN
-        to=sender_address,
-        deadline=deadline,
-    ).transact()
+#     # Perform the token swap from USDCx to ATN
+#     swap_tx = uniswap_router.swap_exact_tokens_for_eth(
+#         amount_in=usdcx_amount,
+#         amount_out_min=0,  # You can set this to a minimum expected NTN amount
+#         path=[params.USDCX_ADDRESS, params.WATN_ADDRESS],  # Swap USDCx -> ATN
+#         to=sender_address,
+#         deadline=deadline,
+#     ).transact()
     
-    # Wait for the transaction to be mined
-    w3.eth.wait_for_transaction_receipt(swap_tx)
+#     # Wait for the transaction to be mined
+#     w3.eth.wait_for_transaction_receipt(swap_tx)
 
-tasks.append(swap_exact_tokens_for_tokens_usdcx_to_atn)
+# tasks.append(swap_exact_tokens_for_tokens_usdcx_to_atn)
 
 
 # def swap_exact_atn_for_ntn(w3: Web3) -> None:
@@ -198,68 +198,68 @@ tasks.append(swap_exact_tokens_for_tokens_usdcx_to_atn)
 
 # tasks.append(swap_exact_atn_for_ntn)
 
-def add_liquidity(w3: Web3) -> None:
-    """Adds 0.1 NTN and 0.01 USDCx to the Uniswap liquidity pool."""
+# def add_liquidity(w3: Web3) -> None:
+#     """Adds 0.1 NTN and 0.01 USDCx to the Uniswap liquidity pool."""
 
-    ntn = ERC20(w3, params.NTN_ADDRESS)
-    ntn_amount = int(0.1 * 10 ** ntn.decimals())
-    approve_tx_2 = ntn.approve(params.UNISWAP_ROUTER_ADDRESS, ntn_amount).transact()
-    w3.eth.wait_for_transaction_receipt(approve_tx_2)
+#     ntn = ERC20(w3, params.NTN_ADDRESS)
+#     ntn_amount = int(0.1 * 10 ** ntn.decimals())
+#     approve_tx_2 = ntn.approve(params.UNISWAP_ROUTER_ADDRESS, ntn_amount).transact()
+#     w3.eth.wait_for_transaction_receipt(approve_tx_2)
 
-    usdc = ERC20(w3, params.USDCX_ADDRESS)
-    usdc_amount = int(0.01 * 10 ** usdc.decimals())
-    approve_tx_1 = usdc.approve(params.UNISWAP_ROUTER_ADDRESS, usdc_amount).transact()
-    w3.eth.wait_for_transaction_receipt(approve_tx_1)
+#     usdc = ERC20(w3, params.USDCX_ADDRESS)
+#     usdc_amount = int(0.01 * 10 ** usdc.decimals())
+#     approve_tx_1 = usdc.approve(params.UNISWAP_ROUTER_ADDRESS, usdc_amount).transact()
+#     w3.eth.wait_for_transaction_receipt(approve_tx_1)
 
-    uniswap_router = UniswapV2Router02(w3, params.UNISWAP_ROUTER_ADDRESS)
-    sender_address = cast(ChecksumAddress, w3.eth.default_account)
-    deadline = w3.eth.get_block("latest").timestamp + 10  # type: ignore
-    add_liquidity_tx = uniswap_router.add_liquidity(
-        token_a=params.NTN_ADDRESS,
-        token_b=params.USDCX_ADDRESS,
-        amount_a_desired=ntn_amount,
-        amount_b_desired=usdc_amount,
-        amount_a_min=0,
-        amount_b_min=0,
-        to=sender_address,
-        deadline=deadline,
-    ).transact()
-    w3.eth.wait_for_transaction_receipt(add_liquidity_tx)
-
-
-tasks.append(add_liquidity)
+#     uniswap_router = UniswapV2Router02(w3, params.UNISWAP_ROUTER_ADDRESS)
+#     sender_address = cast(ChecksumAddress, w3.eth.default_account)
+#     deadline = w3.eth.get_block("latest").timestamp + 10  # type: ignore
+#     add_liquidity_tx = uniswap_router.add_liquidity(
+#         token_a=params.NTN_ADDRESS,
+#         token_b=params.USDCX_ADDRESS,
+#         amount_a_desired=ntn_amount,
+#         amount_b_desired=usdc_amount,
+#         amount_a_min=0,
+#         amount_b_min=0,
+#         to=sender_address,
+#         deadline=deadline,
+#     ).transact()
+#     w3.eth.wait_for_transaction_receipt(add_liquidity_tx)
 
 
-def remove_liquidity(w3: Web3) -> None:
-    """Removes all funds from the Uniswap liquidity pool."""
-
-    uniswap_factory = UniswapV2Factory(w3, params.UNISWAP_FACTORY_ADDRESS)
-    ntn_usdc_pair_address = uniswap_factory.get_pair(
-        params.NTN_ADDRESS, params.USDCX_ADDRESS
-    )
-
-    uniswap_ntn_usdc_pair = ERC20(w3, ntn_usdc_pair_address)
-    sender_address = cast(ChecksumAddress, w3.eth.default_account)
-    liquidity_amount = uniswap_ntn_usdc_pair.balance_of(sender_address)
-
-    if liquidity_amount > 0:
-        approve_tx = uniswap_ntn_usdc_pair.approve(
-            params.UNISWAP_ROUTER_ADDRESS, liquidity_amount
-        ).transact()
-        w3.eth.wait_for_transaction_receipt(approve_tx)
-
-        uniswap_router = UniswapV2Router02(w3, params.UNISWAP_ROUTER_ADDRESS)
-        deadline = w3.eth.get_block("latest").timestamp + 10  # type: ignore
-        remove_liquidity_tx = uniswap_router.remove_liquidity(
-            token_a=params.NTN_ADDRESS,
-            token_b=params.USDCX_ADDRESS,
-            liquidity=liquidity_amount,
-            amount_a_min=0,
-            amount_b_min=0,
-            to=sender_address,
-            deadline=deadline,
-        ).transact()
-        w3.eth.wait_for_transaction_receipt(remove_liquidity_tx)
+# tasks.append(add_liquidity)
 
 
-tasks.append(remove_liquidity)
+# def remove_liquidity(w3: Web3) -> None:
+#     """Removes all funds from the Uniswap liquidity pool."""
+
+#     uniswap_factory = UniswapV2Factory(w3, params.UNISWAP_FACTORY_ADDRESS)
+#     ntn_usdc_pair_address = uniswap_factory.get_pair(
+#         params.NTN_ADDRESS, params.USDCX_ADDRESS
+#     )
+
+#     uniswap_ntn_usdc_pair = ERC20(w3, ntn_usdc_pair_address)
+#     sender_address = cast(ChecksumAddress, w3.eth.default_account)
+#     liquidity_amount = uniswap_ntn_usdc_pair.balance_of(sender_address)
+
+#     if liquidity_amount > 0:
+#         approve_tx = uniswap_ntn_usdc_pair.approve(
+#             params.UNISWAP_ROUTER_ADDRESS, liquidity_amount
+#         ).transact()
+#         w3.eth.wait_for_transaction_receipt(approve_tx)
+
+#         uniswap_router = UniswapV2Router02(w3, params.UNISWAP_ROUTER_ADDRESS)
+#         deadline = w3.eth.get_block("latest").timestamp + 10  # type: ignore
+#         remove_liquidity_tx = uniswap_router.remove_liquidity(
+#             token_a=params.NTN_ADDRESS,
+#             token_b=params.USDCX_ADDRESS,
+#             liquidity=liquidity_amount,
+#             amount_a_min=0,
+#             amount_b_min=0,
+#             to=sender_address,
+#             deadline=deadline,
+#         ).transact()
+#         w3.eth.wait_for_transaction_receipt(remove_liquidity_tx)
+
+
+# tasks.append(remove_liquidity)

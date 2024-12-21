@@ -108,7 +108,7 @@ def swap_exact_tokens_for_tokens(w3: Web3) -> None:
     w3.eth.wait_for_transaction_receipt(swap_tx)
 
 
-# tasks.append(swap_exact_tokens_for_tokens)
+tasks.append(swap_exact_tokens_for_tokens)
 
 # def swap_exact_tokens_for_tokens_usdcx_to_ntn(w3: Web3) -> None:
 #     """Swaps USDCx for 0.1 NTN."""

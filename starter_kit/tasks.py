@@ -196,7 +196,7 @@ tasks.append(swap_exact_tokens_for_tokens_usdcx_to_atn)
 #     w3.eth.wait_for_transaction_receipt(swap_tx)
 
 
-tasks.append(swap_exact_atn_for_ntn)
+# tasks.append(swap_exact_atn_for_ntn)
 
 def add_liquidity(w3: Web3) -> None:
     """Adds 0.1 NTN and 0.01 USDCx to the Uniswap liquidity pool."""
